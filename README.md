@@ -1,38 +1,53 @@
-# F1 车队领队 · 游戏设计作品集
+# F1 Team Principal / F1 车队领队
 
-一款围绕“做决定，见证车队命运”展开的轻量经营游戏。玩家扮演车队领队，从阵容与研发选择出发，推进赛季，在关键时刻做出取舍，并见证车手与车队在多年中的变化。
+**A mobile-first motorsport management game about making decisions and shaping a team's future.** Choose a team, develop its car and drivers, navigate key moments, and see the consequences unfold across a ten-season career.
 
-本仓库是**作品展示**，包含项目背景、设计思路、开发历程、精选截图与独立制作的简化演示。完整游戏的源代码、数据与构建历史不在本仓库中。
+**一款手机优先的赛车经营游戏：通过决策，改变车队的未来。** 玩家选择车队、发展赛车与车手，在关键时刻作出取舍，并见证结果贯穿十年生涯。
 
-## 项目概要
+This repository is a **portfolio**, not the complete game source. It contains selected screenshots, design and technical notes, development history and a separately created small playable demo. The complete game's source, data and development history are not included.
 
-- **类型**：手机优先的浏览器经营模拟游戏
-- **核心体验**：快速推进比赛；在关键节点做选择；用结果和反馈串起车队故事
-- **完整作品**：十年生涯、跨赛季车手成长与阵容变化、车队研发、随机事件、赛季与生涯结算
-- **主要技术**：HTML、CSS、JavaScript；通过结果级模拟生成比赛与赛季结果
-- **项目角色**：GEORGE 主导玩法构思、规则、需求与迭代方向；开发过程中使用 AI 辅助实现、调试与测试
+本仓库用于**作品展示**，包含精选截图、设计与技术说明、开发历程和独立制作的简化演示；不包含完整游戏的源代码、数据与开发历史。
 
-## 作品展示
+## At a glance / 项目概览
 
-![离线双语版车队选择](screenshots/team-selection.png)
+| | |
+|---|---|
+| Experience / 核心体验 | Fast season simulation, meaningful management decisions and emerging stories / 快速推进赛季、作出经营决策，并通过结果形成故事 |
+| Full game / 完整作品 | Ten seasons, driver development and contracts, recruitment, car development, events and career review / 十年生涯、车手成长与合同、新人市场、赛车研发、随机事件和生涯总结 |
+| Technology / 技术 | HTML, CSS and JavaScript; result-level simulation rather than lap-by-lap physics / 使用 HTML、CSS、JavaScript，以结果级模拟替代逐圈物理模拟 |
+| Role / 分工 | GEORGE led the concept, rules, requirements and iteration; AI assisted implementation, debugging and testing / GEORGE 主导玩法构思、规则、需求和迭代方向；AI 辅助实现、调试与测试 |
 
-![比赛中心的早期版本](screenshots/race-center-historical.png)
+## Screenshots / 游戏截图
 
-比赛中心截图来自早期版本，用于展示迭代过程，并非当前界面。
+The screenshots show the complete game's offline bilingual version. English and Chinese images are separate sample runs, so simulated results may differ.
 
-更多截图可查看 [`screenshots/`](screenshots/)。
+以下截图来自完整游戏的离线双语版。中英文截图分别从不同的模拟中截取，因此赛果可能不同。
 
-## 运行简化演示
+| Screen / 页面 | English | 中文 |
+|---|---|---|
+| Choose a team / 选择车队 | ![Team selection in English](screenshots/01-team-selection-en.png) | ![中文车队选择](screenshots/01-team-selection-zh.png) |
+| Review the line-up / 查看现有阵容 | ![Current line-up in English](screenshots/02-current-lineup-en.png) | ![中文现有阵容](screenshots/02-current-lineup-zh.png) |
+| Race centre / 比赛中心 | ![Race centre in English](screenshots/05-race-center-en.png) | ![中文比赛中心](screenshots/05-race-center-zh.png) |
+| Make a race decision / 比赛决策 | ![Race decision in English](screenshots/06-race-decision-en.png) | ![中文比赛决策](screenshots/06-race-decision-zh.png) |
+| Review the result / 查看赛果 | ![Race result in English](screenshots/07-race-result-en.png) | ![中文比赛结果](screenshots/07-race-result-zh.png) |
 
-打开 [`demo/index.html`](demo/index.html)，即可体验独立制作的小型经营决策示例。演示使用虚构数据与简化规则，并非完整游戏、完整引擎或原始数值模型；下载仓库后也可在浏览器离线打开。
+## Try the small demo / 体验简化演示
 
-## 设计与开发
+Open [demo/index.html](demo/index.html) locally after downloading the repository. This independent bilingual example uses fictional data and simplified rules to demonstrate one management choice and its outcome; it is **not** the complete game or the original simulation engine. GitHub's file view displays source rather than running the game.
 
-- [设计思路与系统说明](docs/design-and-technology.md)
-- [开发历程与验证记录](docs/development-process.md)
+下载仓库后在浏览器中打开 [demo/index.html](demo/index.html)，即可离线体验一个管理决策及其结果。演示支持中英文，使用虚构数据和简化规则，**不是**完整游戏或原始模拟引擎。GitHub 文件页面展示的是源码，并不会直接运行游戏。
 
-## 版权与声明
+## Explore the project / 了解项目
 
-除另有说明外，本仓库的原创作品和代码版权归 GEORGE 所有。允许个人查看与试玩；未经许可，不得复制、修改、再发布或用于其他项目。此声明不能阻止公开内容被查看或按平台规则 fork。
+- [Design and technology / 设计思路与系统说明](docs/design-and-technology.md)
+- [Development and validation / 开发历程与验证记录](docs/development-process.md)
 
-本项目为非官方、非商业粉丝作品，与 Formula 1、FIA、车队及其他相关权利人无隶属或合作关系。涉及的现实名称及标识归其各自权利人所有。游戏评分和结果均为虚构设计。
+## Copyright and notice / 版权与声明
+
+Unless otherwise stated, original content and code in this repository are copyright © GEORGE. Personal viewing and play are permitted; copying, modifying, redistributing or using them in another project requires permission. Public content can still be viewed or forked under GitHub's rules.
+
+除另有说明外，本仓库的原创内容与代码版权归 GEORGE 所有。允许个人查看和试玩；复制、修改、再发布或用于其他项目须事先获得许可。公开内容仍可按照 GitHub 规则被查看或 fork。
+
+This is an unofficial, non-commercial fan project, unaffiliated with Formula 1, the FIA, teams or other rights holders. Third-party names and marks belong to their respective owners. Ratings and outcomes are fictional game design.
+
+本项目是非官方、非商业粉丝作品，与 Formula 1、FIA、车队及其他权利人无隶属或合作关系。相关名称与标识归其各自权利人所有；游戏评分和结果均为虚构设计。
