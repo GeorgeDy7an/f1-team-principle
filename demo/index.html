@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>车队领队 · 策略演示</title>
+  <style>
+    :root{color-scheme:dark;--ink:#f2f5f8;--muted:#b5c2cf;--line:#536477;--panel:#13263a;--canvas:#071625;--accent:#f2b453;--good:#a3e7ca}*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.55 "Microsoft YaHei","PingFang SC",system-ui,sans-serif}main{max-width:590px;min-height:100svh;margin:auto;padding:clamp(18px,4vw,32px);display:flex;flex-direction:column;gap:20px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px}.brand{font-weight:800;letter-spacing:.04em}.badge{color:var(--accent);font-size:.78rem;border:1px solid #99773f;border-radius:20px;padding:3px 9px;white-space:nowrap}h1,h2,p{margin:0}h1{font-size:clamp(1.8rem,7vw,2.65rem);line-height:1.15;letter-spacing:-.03em}h2{font-size:1.18rem}.muted{color:var(--muted)}.story{border-left:3px solid var(--accent);padding-left:16px}.story p{margin-top:9px}.raceboard{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;background:#dce7ed;color:#102438;border-radius:5px}.raceboard strong{font-size:1.45rem}.raceboard span{display:block;font-size:.78rem}.content{display:grid;gap:12px}.choice{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;gap:16px;padding:14px 16px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;cursor:pointer;font:inherit}.choice strong,.choice small{display:block}.choice small{color:var(--muted);margin-top:2px;font-size:.84rem}.choice .mark{color:var(--accent);font-size:1.25rem}.choice:hover,.choice:focus-visible{border-color:var(--accent);outline:2px solid transparent;outline-offset:2px}.choice:focus-visible{outline-color:var(--accent)}.result{display:grid;gap:12px;background:var(--panel);border:1px solid var(--line);padding:18px;border-radius:8px}.result .position{font-size:clamp(2.5rem,10vw,4rem);line-height:1;font-weight:900;color:var(--good)}.primary{padding:12px 18px;border:0;border-radius:6px;background:var(--accent);color:#172334;font:inherit;font-weight:800;cursor:pointer}.primary:focus-visible{outline:3px solid #fff;outline-offset:3px}footer{margin-top:auto;color:var(--muted);font-size:.78rem;border-top:1px solid var(--line);padding-top:12px}footer p+p{margin-top:5px}@media(max-width:360px){main{padding:14px;gap:14px}.choice{padding:11px 12px}.raceboard{padding:12px}.story p{font-size:.9rem}}
+  </style>
+</head>
+<body>
+  <main>
+    <header><div class="brand">车队领队</div><span class="badge">独立简化演示</span></header>
+    <section class="story" aria-labelledby="title">
+      <h1 id="title">最后一场，<br>你来做决定。</h1>
+      <p class="muted">虚构的星河车队排名第三。前方对手更快，但一次选择可能改变比赛结果。</p>
+    </section>
+    <div class="raceboard" aria-label="当前形势：车队第三，下一场为赛季收官战"><div><span>车队排名</span><strong>第 3</strong></div><div><span>下一站</span><strong>赛季收官战</strong></div></div>
+    <section id="game" class="content" aria-live="polite"></section>
+    <footer><p>这是为作品集单独制作的小型示例，不包含完整游戏的代码、数据或赛季系统。</p><p>结果会随选择和随机波动变化；可反复体验。</p></footer>
+  </main>
+  <script>
+    'use strict';
+    const game = document.getElementById('game');
+    const choices = {
+      push: {label:'全力进攻', detail:'争取更好名次，但也可能掉出前列。', odds:[.3,.62,.88,1]},
+      steady: {label:'稳住节奏', detail:'控制风险，争取可靠完赛。', odds:[.08,.3,.83,1]}
+    };
+    function showChoices(){
+      game.className='content';
+      game.innerHTML='<h2>选择你的比赛策略</h2>' + Object.entries(choices).map(([id,c]) => `<button class="choice" type="button" data-choice="${id}"><span><strong>${c.label}</strong><small>${c.detail}</small></span><span class="mark" aria-hidden="true">›</span></button>`).join('');
+      game.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>runRace(button.dataset.choice)));
+    }
+    function runRace(id){
+      const choice=choices[id]; if(!choice)return;
+      const roll=Math.random(); const index=choice.odds.findIndex(limit=>roll<limit); const places=[1,2,3,5]; const place=places[index<0?3:index];
+      const outcome=place===1?'你抓住机会登上了最高领奖台。':place===2?'车队把握住机会，拿到亚军。':place===3?'车队稳住了领奖台位置。':'这次尝试未能奏效，车队最终排名第五。';
+      game.className='result';
+      game.innerHTML=`<h2>收官战结果</h2><div class="position">第 ${place} 名</div><p>${outcome}</p><p class="muted">你的选择：${choice.label}。比赛结果还受到随机波动影响。</p><button class="primary" type="button">重新选择</button>`;
+      game.querySelector('button').addEventListener('click',showChoices);
+    }
+    showChoices();
+  </script>
+</body>
+</html>
